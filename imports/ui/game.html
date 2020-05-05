@@ -12,6 +12,21 @@
     <div class="toggle-role">show/hide</div>
     <div id="hidden-role" class="hidden-info show">
       <h2 class="hidden-role">you're <b>{{ role }}</b>!</h2>
+      {{# if teammates }}
+      <p>
+        these are your fellow fascists:
+        <ul class="playerlist">
+          {{# each teammates }}
+          <li class="{{# if equals playerId player._id }}current{{/ if }}">
+            {{ name }}
+            {{# if hitler }}
+            <span>(hitler)</span>
+            {{/ if }}
+          </li>
+          {{/ each }}
+        </ul>
+      </p>
+      {{/ if }}
     </div>
   </div>
 
@@ -126,15 +141,6 @@
         the vote failed...<br />
         waiting on {{ votecount }} {{ peopleOrperson votecount }}
       </p>
-      <div class="toggle-reveal-vote">show/hide</div>
-      <ul id="reveal-votelist" class="playerlist votelist">
-        {{# each ballot }}
-          <li class="{{# if current }}current{{/ if }}">
-            {{ name }}
-            <span>({{ vote }})</span>
-          </li>
-        {{/ each }}
-      </ul>
     </div>
     {{# unless dead }}
       {{# unless haventvoted }}
@@ -148,15 +154,6 @@
     {{# if equals room.policychoices.length 3 }}
       <div class="vote-reveal-container">
         <p>the vote passed!</p>
-        <div class="toggle-reveal-vote">show/hide</div>
-        <ul id="reveal-votelist" class="playerlist votelist">
-          {{# each ballot }}
-            <li class="{{# if current }}current{{/ if }}">
-              {{ name }}
-              <span>({{ vote }})</span>
-            </li>
-          {{/ each }}
-        </ul>
       </div>
     {{/ if }}
     <!-- president view -->
@@ -180,7 +177,7 @@
             <p>choose a policy to <strong>discard</strong></p>
             <p>
               {{# each policy in room.policychoices }}
-              <button class="pick-{{ policy }}">{{ policy }}</button>
+              <button class="pick-{{ policy }}">{{ policy }} ❌</button>
               {{/ each }}
             </p>
           {{/ if }}
@@ -231,7 +228,7 @@
               <p>choose a policy to <strong>discard</strong></p>
               <p>
                 {{# each policy in room.policychoices }}
-                <button class="pick-{{ policy }}">{{ policy }}</button>
+                <button class="pick-{{ policy }}">{{ policy }} ❌</button>
                 {{/ each }}
               </p>
             {{/ if }}

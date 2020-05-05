@@ -55,6 +55,18 @@ Template.game.helpers({
     let player = Players.findOne(playerId);
     return player.role;
   },
+  teammates: function () {
+    let playerId = Session.get("playerId");
+    let player = Players.findOne(playerId);
+    let room = Rooms.findOne(roomId);
+    if (player.role == "liberal") {
+      return false;
+    } else if (player.role == "hitler" && (room.size >= 7 && room.size <= 10)) {
+      return false;
+    } else {
+      return room.teamfascists;
+    }
+  },
   president: function() {
     let playerId = Session.get("playerId");
     let roomId = Session.get("roomId");

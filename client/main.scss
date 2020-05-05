@@ -1,4 +1,5 @@
 $orange: #FFA000;
+$red: #FF0000;
 $president-color:  #1B6DB2;
 $president-candidate-color: lighten(#1B6DB2, 25%);
 $chancellor-candidate-color: lighten(#797F06, 20%);
@@ -76,6 +77,7 @@ button {
   border-radius: 4px;
 	padding: 10px 28px;
 	outline: none;
+	min-width: 200px;
 	margin: 5px;
 	cursor: pointer;
   &:disabled {
@@ -283,8 +285,8 @@ div.footer {
   }
   .tile {
     display: block;
-    width: 1em;
-    height: 2em;
+    width: 3em;
+    height: 4em;
     border-radius: 5px;
   }
 }
@@ -294,7 +296,7 @@ div.footer {
   flex-direction: row;
   div {
     margin-left: 3px;
-    border: 1px solid $liberal-color;
+    border: 3px solid $liberal-color;
   }
   .fill {
     background-color: $liberal-color;
@@ -306,15 +308,29 @@ div.footer {
   flex-direction: row;
   div {
     margin-right: 3px;
-    border: 1px solid $fascist-color;
+    border: 3px solid $fascist-color;
   }
   .fill {
     background-color: $fascist-color;
   }
   i {
-    font-size: 0.6em;
-    vertical-align: -35%;
+    font-size: 2em;
+    vertical-align: -80%;
     color: $fascist-color;
+  }
+}
+
+.pick-fascist {
+  border: 3px solid $fascist-color;
+  &:hover {
+    border: 3px solid $red;
+  }
+}
+
+.pick-liberal {
+  border: 3px solid $liberal-color;
+  &:hover {
+    border: 3px solid $red;
   }
 }
 
@@ -441,7 +457,7 @@ div.footer {
 }
 
 .win-condition-container {
-  width: 90%;
+  // width: 90%;
 }
 
 .win-condition-dropdown {

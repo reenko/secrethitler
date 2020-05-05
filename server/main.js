@@ -54,14 +54,14 @@ Meteor.methods({
     demo ? lobbyState = "demolobby" : lobbyState = "lobby"
     // console.log("lobby state", lobbyState);
 
-    let accessCode = Random.hexString(6);
+    let accessCode = Random.hexString(3);
     name = name.trim();
     codename = codename.trim();
     // console.log(name);
 
     while (Rooms.find({accessCode:accessCode}).count() > 0) {
       // console.log(accessCode);
-      accessCode = Random.hexString(6);
+      accessCode = Random.hexString(3);
       // console.log(accessCode);
     }
 
